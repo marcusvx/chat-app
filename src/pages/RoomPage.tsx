@@ -1,18 +1,13 @@
 import { useParams } from "react-router-dom";
-import { useEvents } from "../hooks/useEvents";
-import ChatEvent from "../models/chat-event";
+import ChatEventList from "../components/ChatEventList";
 
 export const RoomPage = () => {
   const { id } = useParams<{ id: string }>();
-  const currentDate = new Date();
-  const { data } = useEvents(Number(id), currentDate);
-
+  const roomId = Number(id);
+  
   return (
     <div>
-      Room
-      {data?.map((event: ChatEvent) => {
-        return <div>{event.eventType}</div>;
-      })}
+      <ChatEventList roomId={roomId} />
     </div>
   );
 };

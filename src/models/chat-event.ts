@@ -1,6 +1,6 @@
 export default interface ChatEvent {
   id: number;
-  receivedAt: Date;
+  receivedAt: string;
   roomName: string;
   fromUserName: string;
   toUserName?: string;
