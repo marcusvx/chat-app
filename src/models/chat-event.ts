@@ -1,4 +1,4 @@
-export default interface Event {
+export default interface ChatEvent {
   id: number;
   receivedAt: Date;
   roomName: string;

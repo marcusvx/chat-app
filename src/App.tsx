@@ -1,13 +1,18 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./AppRouter";
 import RoomList from "./components/RoomList";
 
 const App = () => {
   return (
     <div className="App">
-      <header>Chat rooms</header>
-      <nav>
+      <BrowserRouter>
+        <header>Chat rooms</header>
         <RoomList />
-      </nav>
+        <div>
+          <AppRouter />
+        </div>
+      </BrowserRouter>
     </div>
   );
 };

@@ -1,29 +1,20 @@
-import { useEffect } from "react";
-import { ActionTypes } from "../../state/action-types";
-import useApiRequest from "../../state/useApi";
+import { Link } from "react-router-dom";
+import { useRooms } from "../../hooks/useRooms";
 
 const RoomList = () => {
-  const [state, makeRequest] = useApiRequest(
-    `${process.env.REACT_APP_BACKEND_URL}/rooms`
-  );
-
-  useEffect(() => {
-    (async function () {
-      await makeRequest();
-    })();
-  }, []);
+  const { data, isLoading, hasError } = useRooms();
 
   return (
     <>
-      <div>
-        {state.status === ActionTypes.FETCHING && <div>Loading...</div>}
-      </div>
+      <div>{isLoading && <div>Loading...</div>}</div>
 
       <div>
-        {state.status === ActionTypes.SUCCESS && (
+        {data && (
           <ul>
-            {state.response.data.map((room: any) => (
-              <li key={room.id}>{room.name}</li>
+            {data.map((room: any) => (
+              <li key={room.id}>
+                <Link to={`/rooms/${room.id}`}>{room.name}</Link>
+              </li>
             ))}
           </ul>
         )}
