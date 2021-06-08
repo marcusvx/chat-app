@@ -1,3 +1,4 @@
+import { formatTime } from "../../helpers/format-time";
 import ChatEvent from "../../models/chat-event";
 
 interface ChatEventItemProps {
@@ -5,11 +6,6 @@ interface ChatEventItemProps {
 }
 
 const ChatEventItem = ({ chatEvent }: ChatEventItemProps) => {
-  const formatTime = (fullDateTime: string) => {
-    const date = new Date(Date.parse(fullDateTime));
-    return date.toLocaleTimeString([], { timeStyle: "short" });
-  };
-
   const writeEvent = (event: ChatEvent) => {
     switch (event.eventType) {
       case "Enter":

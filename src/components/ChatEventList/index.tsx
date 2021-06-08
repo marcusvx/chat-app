@@ -12,7 +12,7 @@ const ChatEventList = ({ roomId }: ChatEventListProps) => {
 
   return (
     <>
-      {data?.map((chatEvent: ChatEvent) => (
+      {data && (data as ChatEvent[]).map((chatEvent: ChatEvent) => (
         <ChatEventItem key={chatEvent.id} chatEvent={chatEvent} />
       ))}
     </>

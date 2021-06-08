@@ -2,14 +2,17 @@ import useSWR from "swr";
 import { getDateParts } from "../helpers/get-date-parts";
 import { fetcher } from "../helpers/fetcher";
 import { ApiResponse } from "../models/api-response";
-import ChatEvent from "../models/chat-event";
+import { ChatEventSummary } from "../models/chat-event-summary";
 
-const useEvents = (roomId: number, date: Date): ApiResponse<ChatEvent[]> => {
+const useEventsSummary = (
+  roomId: number,
+  date: Date
+): ApiResponse<ChatEventSummary[]> => {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const { year, month, day } = getDateParts(date);
-  const fetchUrl = `${backendUrl}/events/${year}/${month}/${day}/?room=${roomId}`;
+  const fetchUrl = `${backendUrl}/events/${year}/${month}/${day}/hourly/?room=${roomId}`;
 
-  const { data, error } = useSWR<ChatEvent[]>(fetchUrl, fetcher);
+  const { data, error } = useSWR<ChatEventSummary[]>(fetchUrl, fetcher);
 
   return {
     data,
@@ -18,4 +21,4 @@ const useEvents = (roomId: number, date: Date): ApiResponse<ChatEvent[]> => {
   };
 };
 
-export { useEvents };
+export { useEventsSummary };
