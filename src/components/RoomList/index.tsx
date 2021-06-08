@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useRooms } from "../../hooks/useRooms";
 
 const RoomList = () => {
-  const { data, isLoading, hasError } = useRooms();
+  const { data, isLoading } = useRooms();
 
   return (
     <>
