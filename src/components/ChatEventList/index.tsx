@@ -4,17 +4,18 @@ import ChatEventItem from "./ChatEventItem";
 
 interface ChatEventListProps {
   roomId: number;
+  date: Date;
 }
 
-const ChatEventList = ({ roomId }: ChatEventListProps) => {
-  const currentDate = new Date();
-  const { data } = useEvents(roomId, currentDate);
+const ChatEventList = ({ roomId, date }: ChatEventListProps) => {
+  const { data } = useEvents(roomId, date);
 
   return (
     <>
-      {data && (data as ChatEvent[]).map((chatEvent: ChatEvent) => (
-        <ChatEventItem key={chatEvent.id} chatEvent={chatEvent} />
-      ))}
+      {data &&
+        (data as ChatEvent[]).map((chatEvent: ChatEvent) => (
+          <ChatEventItem key={chatEvent.id} chatEvent={chatEvent} />
+        ))}
     </>
   );
 };

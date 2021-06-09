@@ -4,11 +4,11 @@ import ChatSummaryItem from "./ChatSummaryItem";
 
 interface ChatSummaryProps {
   roomId: number;
+  date: Date;
 }
 
-const ChatSummary = ({ roomId }: ChatSummaryProps) => {
-  const currentDate = new Date();
-  const { data } = useEventsSummary(roomId, currentDate);
+const ChatSummary = ({ roomId, date }: ChatSummaryProps) => {
+  const { data } = useEventsSummary(roomId, date);
 
   return (
     <>
