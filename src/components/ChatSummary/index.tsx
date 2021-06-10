@@ -12,9 +12,15 @@ const ChatSummary = ({ roomId, date }: ChatSummaryProps) => {
 
   return (
     <>
-      {data?.map((chatEvent: ChatEventSummary) => (
-        <ChatSummaryItem key={chatEvent.hour} chatEventSummary={chatEvent} />
-      ))}
+      {data &&
+        data.map((chatEvent: ChatEventSummary) => {
+          return (
+            <ChatSummaryItem
+              key={chatEvent.hour}
+              chatEventSummary={chatEvent}
+            />
+          );
+        })}
     </>
   );
 };

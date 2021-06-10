@@ -1,3 +1,5 @@
+import React from "react";
+import { Content, Media, Image } from "react-bulma-components";
 import { formatTime } from "../../helpers/format-time";
 import ChatEvent from "../../models/chat-event";
 
@@ -9,24 +11,35 @@ const ChatEventItem = ({ chatEvent }: ChatEventItemProps) => {
   const writeEvent = (event: ChatEvent) => {
     switch (event.eventType) {
       case "Enter":
-        return `${event.fromUserName} enters the room`;
+        return <span className="is-italic">enters the room</span>;
 
       case "Leave":
-        return `${event.fromUserName} leaves the room`;
+        return <span className="is-italic">leaves the room</span>;
 
       case "HighFive":
-        return `${event.fromUserName} high-fives ${event.toUserName}`;
+        return (
+          <span className="is-italic">
+            high-fives <strong>{event.toUserName}</strong>
+          </span>
+        );
 
       default:
-        return `${event.fromUserName} comments: ${event.comment}`;
+        return <div>{event.comment}</div>;
     }
   };
 
   return (
-    <div>
-      <span>{formatTime(chatEvent.receivedAt)}: </span>
-      <span>{writeEvent(chatEvent)}</span>
-    </div>
+    <Media renderAs="article">
+      <Media.Item align="center">
+        <Content>
+          <strong className="mr-2 ">{chatEvent.fromUserName}</strong>
+          {writeEvent(chatEvent)}
+          <div>
+            <small>{formatTime(chatEvent.receivedAt)}</small>
+          </div>
+        </Content>
+      </Media.Item>
+    </Media>
   );
 };
 
