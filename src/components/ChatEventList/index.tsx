@@ -1,6 +1,8 @@
 import { useEvents } from "../../hooks/useEvents";
 import ChatEvent from "../../models/chat-event";
 import ChatEventItem from "./ChatEventItem";
+import { Notification } from "react-bulma-components";
+import Skeleton from "react-loading-skeleton";
 
 interface ChatEventListProps {
   roomId: number;
@@ -8,7 +10,18 @@ interface ChatEventListProps {
 }
 
 const ChatEventList = ({ roomId, date }: ChatEventListProps) => {
-  const { data } = useEvents(roomId, date);
+  const { data, isLoading, hasError } = useEvents(roomId, date);
+  if (isLoading) {
+    return <Skeleton height={50} count={5} className="mb-2" />;
+  }
+
+  if (hasError || !data?.length) {
+    return (
+      <Notification color="string">
+        No chat data found for the date
+      </Notification>
+    );
+  }
 
   return (
     <>

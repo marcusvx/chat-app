@@ -3,17 +3,21 @@ import { useParams } from "react-router-dom";
 import ChatEventList from "../components/ChatEventList";
 import ChatSummary from "../components/ChatSummary";
 import DatePicker from "react-datepicker";
-import { Box, Form, Level } from "react-bulma-components";
+import { Box, Form, Heading, Level } from "react-bulma-components";
+import { useRoom } from "../hooks/useRoom";
+import Skeleton from "react-loading-skeleton";
 
 export const RoomPage = () => {
   const { id } = useParams<{ id: string }>();
   const roomId = Number(id);
+  const { data } = useRoom(roomId);
 
   const [view, setView] = useState("minute");
   const [date, setDate] = useState(new Date());
 
   return (
     <>
+      <Heading>{data?.name || <Skeleton height={40} width={400} />}</Heading>
       <Box>
         <Level>
           <Level.Side>
