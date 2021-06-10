@@ -1,5 +1,4 @@
-import React from "react";
-import { Content, Media, Image } from "react-bulma-components";
+import { Content, Media } from "react-bulma-components";
 import { formatTime } from "../../helpers/format-time";
 import ChatEvent from "../../models/chat-event";
 
