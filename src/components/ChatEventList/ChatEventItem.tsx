@@ -1,5 +1,5 @@
 import { Content, Media } from "react-bulma-components";
-import { formatTime } from "../../helpers/format-time";
+import { formatTime } from "../../helpers";
 import ChatEvent from "../../models/chat-event";
 
 interface ChatEventItemProps {
@@ -31,10 +31,14 @@ const ChatEventItem = ({ chatEvent }: ChatEventItemProps) => {
     <Media renderAs="article">
       <Media.Item align="center">
         <Content>
-          <strong className="mr-2 ">{chatEvent.fromUserName}</strong>
-          {writeEvent(chatEvent)}
           <div>
-            <small>{formatTime(chatEvent.receivedAt)}</small>
+            <strong className="mr-2 ">{chatEvent.fromUserName}</strong>
+            {writeEvent(chatEvent)}
+          </div>
+          <div>
+            <time className="is-size-5" dateTime={chatEvent.receivedAt}>
+              {formatTime(chatEvent.receivedAt)}
+            </time>
           </div>
         </Content>
       </Media.Item>

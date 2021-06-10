@@ -1,6 +1,6 @@
 import React from "react";
 import { Columns, Content, Heading, Media } from "react-bulma-components";
-import { formatTime } from "../../helpers/format-time";
+import { formatTime } from "../../helpers";
 import {
   ChatEventSummary,
   ChatEventSummaryItem,
