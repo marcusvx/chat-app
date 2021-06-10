@@ -36,7 +36,7 @@ const ChatEventItem = ({ chatEvent }: ChatEventItemProps) => {
             {writeEvent(chatEvent)}
           </div>
           <div>
-            <time className="is-size-5" dateTime={chatEvent.receivedAt}>
+            <time className="is-size-7" dateTime={chatEvent.receivedAt}>
               {formatTime(chatEvent.receivedAt)}
             </time>
           </div>

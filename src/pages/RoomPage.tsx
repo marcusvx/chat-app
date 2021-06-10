@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { ChatEventList } from "../components/ChatEventList";
-import ChatSummary from "../components/ChatSummary";
+import { ChatSummary } from "../components/ChatSummary";
 import DatePicker from "react-datepicker";
 import { Box, Form, Heading, Level } from "react-bulma-components";
 import { useRoom } from "../hooks/useRoom";

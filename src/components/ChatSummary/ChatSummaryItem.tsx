@@ -33,7 +33,7 @@ const ChatSummaryItem = ({ chatEventSummary }: ChatSummaryItemProps) => {
         <Content>
           <Columns>
             <Columns.Column size={2}>
-              <Heading size={4}>{formatTime(chatEventSummary.hour)}: </Heading>
+              <Heading size={4}>{formatTime(chatEventSummary.hour)}</Heading>
             </Columns.Column>
             <Columns.Column size={10}>
               {chatEventSummary.items.map((item) => (
